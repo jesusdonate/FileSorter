@@ -1,0 +1,5 @@
+C:\Users\donat\GitHub\FileSorter\test_sorter
+.txt -> Texts
+.png, .jpg -> Photos
+.py -> Coding Files
+.java -> Coding Files
