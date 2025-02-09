@@ -133,21 +133,21 @@ def is_valid_path(path: str) -> bool:
     return Path(path).is_dir()
 
 
-'''
-Checks if the file is correctly formatted. If not, it will return a error message. Else, return None
-Token lines can only have the following structure:
-EXT INTO FOLDER_NAME
-EXT [COMMA EXT ...can_repeat] INTO FOLDER_NAME
-
-We can create a Context Free Grammar to get desired structure.
-Let EXT = E, COMMA = C, INTO = I, FOLDER_NAME = f, where E,C,I are variables and f is a terminal. 
-E -> C|I 
-C -> E
-I -> f
-Input: tok_line - Tokenized line from file (got line from get_tokenized_line() from Lexer class)
-Returns: String of error message, or None if no errors found
-'''
 def find_mapping_errors(tok_line: list[Token]) -> Optional[str]:
+    """
+    Checks if the file is correctly formatted. If not, it will return a error message. Else, return None
+    Token lines can only have the following structure:
+    EXT INTO FOLDER_NAME
+    EXT [COMMA EXT ...can_repeat] INTO FOLDER_NAME
+
+    We can create a Context Free Grammar to get desired structure.
+    Let EXT = E, COMMA = C, INTO = I, FOLDER_NAME = f, where E,C,I are variables and f is a terminal.
+    E -> C|I
+    C -> E
+    I -> f
+    Input: tok_line - Tokenized line from file (got line from get_tokenized_line() from Lexer class)
+    Returns: String of error message, or None if no errors found
+    """
     for i, tok in enumerate(tok_line):
         if tok.type == TokenType.ERROR:
             return tok.literal
